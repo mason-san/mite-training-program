@@ -1,7 +1,6 @@
 #include <stdio.h> 
 
 void inputMarks(int *marks, int *n){  
-
     printf("Enter number of students: "); 
     scanf("%d", n); 
 
