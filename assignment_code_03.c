@@ -1,28 +1,34 @@
 #include <stdio.h>  
-#include <string.h> 
 
 int main(){ 
     //init 
-    int number_of_vehicles; 
-    char vehicles[500];     
-
-    //Reading values 
-    printf("Enter number of vehicles: "); 
-    scanf("%d", &number_of_vehicles);  
-    printf("Enter vehicle types: ");  
-    scanf("%s", vehicles); 
-
-    //calculation  
-    int total_toll = 0; 
-    for (int i= 0; i < number_of_vehicles; i++){ 
-        if (strcmp(vehicles[i], "Car")){
-            total_toll+=50; 
-        } else if (strcmp(vehicles[i], "Bike")){
-            total_toll+=20; 
-        }else{
-            total_toll+=100; 
+    int number_of_products = 0; 
+    int weights[25]; 
+  
+    //read details  
+    printf("Enter number of products: "); 
+    scanf("%d", &number_of_products); 
+    printf("Enter weights (in grams): ");   
+    for (int i = 0 ; i < number_of_products; i++){
+        scanf("%d", &weights[i]); 
+    } 
+    //Output example  
+    int accepted_number = 0 ; 
+    int rejected_number = 0 ; 
+    for (int i = 0 ; i < number_of_products; i++){
+        if ((weights[i] >= 950) && (weights[i] <= 1050)){ 
+            accepted_number++; 
+        } else {
+            rejected_number++; 
         }
     }
+
+    //Display 
+    printf("Accepted Products: %d\n", accepted_number); 
+    printf("Rejected Products: %d\n", rejected_number); 
+
+    return 0; 
+}
 
     //display
     printf("Total Toll Collection: %d\n", total_toll); 
