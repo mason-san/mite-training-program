@@ -3,31 +3,31 @@
 
 int main(){ 
     //init 
-    int number_of_vehicles;   
+    int number_of_vehicles;    
+    char vehicleTypes[10]; 
+
     //Reading values 
     printf("Enter number of vehicles: "); 
     scanf("%d", &number_of_vehicles);  
-    printf("Enter vehicle types: ");  
-    
+
     //calculation  
-    int total_toll = 0; 
-     
-    for (int i= 0; i < number_of_vehicles; i++){  
-        char vehicle[100];
-        scanf("%s", &vehicle); 
+    float total_toll = 0;
 
-        if (strcmp(vehicle, "Car") == 0){
-            total_toll+=50; 
-        } else if (strcmp(vehicle, "Truck") == 0){
-            total_toll+= 100; 
-        } else {
-            total_toll+= 20; 
+    for (int i= 1; i <= number_of_vehicles; i++){
+        printf("Enter vehicle type: "); 
+        scanf("%s", vehicleTypes); 
+
+        if (strcmp(vehicleTypes, "Car") == 0){
+            total_toll+=50.00; 
+        } else if (strcmp(vehicleTypes, "Truck") == 0){
+            total_toll+= 100.00; 
+        } else if (strcmp(vehicleTypes, "Bike") == 0) {
+            total_toll+= 20.00; 
         }
-
     }
 
     //display
-    printf("Total Toll Collection: %d\n", total_toll); 
+    printf("Total Toll Collection: %.2f\n", total_toll); 
 
     return 0; 
 }

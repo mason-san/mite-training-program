@@ -1,17 +1,26 @@
 #include <stdio.h>  
 
+void readWeights(int *weights, int *number_of_products){  
+
+    printf("Enter number of products: "); 
+    scanf("%d", number_of_products);  
+
+    printf("Enter weights (in grams): ");   
+    for (int i = 0 ; i < number_of_products; i++){
+        scanf("%d", &weights[i]); 
+    } 
+    
+} 
+
+
+
 int main(){ 
     //init 
     int number_of_products = 0; 
     int weights[25]; 
   
     //read details  
-    printf("Enter number of products: "); 
-    scanf("%d", &number_of_products); 
-    printf("Enter weights (in grams): ");   
-    for (int i = 0 ; i < number_of_products; i++){
-        scanf("%d", &weights[i]); 
-    } 
+    readWeights(weights, &number_of_products); 
     //Output example  
     int accepted_number = 0 ; 
     int rejected_number = 0 ; 
