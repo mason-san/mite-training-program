@@ -6,7 +6,7 @@ void readWeights(int *weights, int *number_of_products){
     scanf("%d", number_of_products);  
 
     printf("Enter weights (in grams): ");   
-    for (int i = 0 ; i < number_of_products; i++){
+    for (int i = 0 ; i < *number_of_products; i++){
         scanf("%d", &weights[i]); 
     } 
     
