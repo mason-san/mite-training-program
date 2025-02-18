@@ -12,6 +12,8 @@ void readWeights(int *weights, int *number_of_products){
     
 } 
 
+
+
 int main(){ 
     //init 
     int number_of_products = 0; 
