@@ -6,7 +6,7 @@ int main(){
     int number_of_vehicles;    
     char vehicleTypes[10]; 
 
-    //Reading values 
+    //Reading valuesa 
     printf("Enter number of vehicles: "); 
     scanf("%d", &number_of_vehicles);  
 
