@@ -33,7 +33,10 @@ int main(){
     //entering values 
     printf("Enter number of students: ");  
     scanf("%d", &number_of_students);
+
+    //block of memory 
     pointer_student =  (p_student) malloc(sizeof(struct student) * number_of_students); 
+
     studentDetails(number_of_students, pointer_student); 
      
     //output  
