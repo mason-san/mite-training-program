@@ -27,14 +27,14 @@ void printDetails(int number_of_students, p_student pointer_student){
 
 int main(){ 
     //init
-    p_student pointer_student; 
     int number_of_students; 
 
     //entering values 
     printf("Enter number of students: ");  
     scanf("%d", &number_of_students);
 
-    //block of memory 
+    //block of memory
+    p_student pointer_student = NULL; //No-wild   
     pointer_student =  (p_student) malloc(sizeof(struct student) * number_of_students); 
 
     studentDetails(number_of_students, pointer_student); 
@@ -43,7 +43,9 @@ int main(){
     printDetails(number_of_students, pointer_student); 
    
     //freeing the memory
-    free(pointer_student); 
+    free(pointer_student); //dangling pointer
+    //For no dangling 
+    pointer_student = NULL;  
 
     return 0; 
 }
