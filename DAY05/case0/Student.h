@@ -1,3 +1,5 @@
+#ifndef STUDENT_HEADER
+#define STUDENT_HEADER
 struct Student_t{
     int rollNo; 
     char name[50]; 
@@ -7,3 +9,4 @@ struct Student_t{
     char grade; 
 }; 
 typedef struct Student_t Student;  
+#endif

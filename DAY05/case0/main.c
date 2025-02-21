@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include "Student.h"
+#include "stack.h"
 
 void readStudentDetails(int n, Student students[]); 
 void calculateTotalAndAverage(int n, Student students[]); 
 void displayStudentDetails(int n, Student students[]); 
+void displayStudentDetailsUsingStack(int n, Student students[]); 
 void createfile(int n, Student students[]);  
 void manageStudents(); 
 
@@ -21,6 +23,7 @@ void manageStudents(){
         printf("Choices:\n"); 
         printf("1-Read Students\n"); 
         printf("2-Display Students\n"); 
+        printf("3-Display Students using Stack\n"); 
         printf("91-Exit\n");
         printf("Your Choice: "); 
         scanf("%d", &choice);
@@ -36,7 +39,10 @@ void manageStudents(){
             case 2: {
                 displayStudentDetails(numberOfStudents, students); 
             } break; 
-            case 3:{
+            case 3: {
+                displayStudentDetailsUsingStack(numberOfStudents, students); 
+            } break; 
+            case 4:{
                 printf("Thank you for using the App :)...\n"); 
             } break; 
         }
@@ -78,6 +84,7 @@ void displayStudentDetails(int n, Student students[]){
         students[i].name, students[i].totalMarks, students[i].percentage, 
         students[i].grade); 
     }
+    printf("--------------------------------------------------------------------------------------\n"); 
 }
 void createfile(int n, Student students[]) {
     FILE *file;
@@ -90,4 +97,24 @@ void createfile(int n, Student students[]) {
         fprintf(file, "%d %s %d %d %d %d\n", students[i].rollNo, students[i].name, students[i].maths, students[i].physics, students[i].chemistry, students[i].cs);
     }
     fclose(file);
+}
+
+void displayStudentDetailsUsingStack(int n, Student students[]){
+    Stack stk;
+    StackInit(&stk); 
+    for(int i = 0 ; i < n ; i++){
+        StackPush(&stk, students[i]); 
+    }
+    printf("Student Details displayed using Stack:\n");
+    printf("--------------------------------------------------------------------------------------\n"); 
+    printf("|%5s|%-20s|%-8s|%10s|%10s|\n", "ID","Name", "Total Marks", "Percentage", "Grade");   
+    printf("--------------------------------------------------------------------------------------\n"); 
+    while(!StackEmpty(&stk)){
+        Student student = StackTop(&stk); 
+        printf("|%5d|%-20s|%-8d|%-10.2f|%-10c|\n", student.rollNo, 
+        student.name, student.totalMarks, student.percentage, 
+        student.grade); 
+        StackPop(&stk); 
+    }
+    printf("--------------------------------------------------------------------------------------\n"); 
 }
