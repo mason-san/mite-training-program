@@ -3,9 +3,8 @@
 #include "Music.h"
 
 circularLinkedList* makeNode();
-void makeCircularLinkedList(int n, circularLinkedList *head);
-void printCircularLinkedList(int n, circularLinkedList *head);
 void updateCircularLinkedList(char c, int n, circularLinkedList *head);
+void printCircularLinkedList(int n, circularLinkedList *head); 
 
 int main(){ 
     //init
@@ -16,14 +15,14 @@ int main(){
     //get details 
     printf("Enter the number of songs: "); 
     scanf("%d", &numberOfSongs); 
-    makeCircularLinkedList(numberOfSongs, head); 
     for(int i = 0; i < numberOfSongs ; i++){
         printf("Enter Song Character: "); 
-        scanf("%c", &songChar); 
+        scanf(" %c", &songChar); 
         updateCircularLinkedList(songChar, numberOfSongs, head);
     }
     //now print the details
-    printCircularLinkedList(numberOfSongs, head); 
+    printf("%c", head->songName);
+    //printCircularLinkedList(numberOfSongs, head); 
 
     return 0; 
 }
@@ -33,31 +32,51 @@ circularLinkedList* makeNode(){
     return p; 
 }
 
-void makeCircularLinkedList(int n, circularLinkedList *head){
+/*void makeCircularLinkedList(int n, circularLinkedList *head){
     circularLinkedList *node; 
     node = makeNode();
+    if(node == NULL){
+        printf("Memory Overflow\n"); 
+        return;
+    }    
     head = node; 
     node->next = head;
-}
+}*/
 
 void updateCircularLinkedList(char c, int n, circularLinkedList *head){
-    circularLinkedList *p = head;
-    for (; p != NULL; p = p->next){
-        p->songName = c; 
+    circularLinkedList *node; 
+    node = makeNode();
+    if(node == NULL){
+        printf("Memory Overflow\n"); 
+        return;
+    } 
+
+    node->songName = c;
+
+    if (head == NULL){
+        head = node; 
+    } else {
+        circularLinkedList *p = head;
+        for (; p->next != head ; p= p->next);
+        p->next = node;
     }
-    p->next = head;  
+
+    node->next = head;  
+    free(node);
 
 }
 
 void printCircularLinkedList(int n, circularLinkedList *head){ 
     printf("Current Song: %c", head->songName); 
-    circularLinkedList *p = makeNode();
-    p = head->next; 
-    for (; p->next != NULL; p = p->next){
+    /*circularLinkedList *p;
+    p = head; 
+    while (p!=head){
         if (p == head){
             printf("Next Song: Song %c (Looped Back)\n", p->songName);
+            return;
         } else {
             printf("Next Song: Song %c\n", p->songName);
         }
-    }
+        p = p->next; 
+    }*/
 }
